@@ -1,10 +1,13 @@
+export type BillingCycle = 'one-time' | 'monthly';
+
 export type Product = {
   id: string;
   name: string;
   description: string;
   price: number;
-  billing: 'one-time' | 'monthly';
+  billing: BillingCycle;
   cta: string;
+  stripePriceEnvKey?: string; // env var holding the Stripe Price ID
 };
 
 export const products: Record<string, Product> = {
@@ -15,24 +18,38 @@ export const products: Record<string, Product> = {
       'Random cue trainer for faster first-step reaction, cleaner clamps, and repeatable reps.',
     price: 49.95,
     billing: 'one-time',
-    cta: 'Add Cube to Cart'
+    cta: 'Add Cube to Cart',
+    stripePriceEnvKey: 'STRIPE_CUBE_PRICE_ID',
   },
-  appMembership: {
-    id: 'appMembership',
-    name: 'Quick Flex App Membership',
+  athlete: {
+    id: 'athlete',
+    name: 'Athlete Plan',
     description:
-      'Weekly trend charts, mode-by-mode history, and progress tracking to keep players accountable.',
-    price: 5,
+      'All ball colors, unlimited session history, CSV export, and global leaderboard access.',
+    price: 6.99,
     billing: 'monthly',
-    cta: 'Add Membership'
-  }
+    cta: 'Get Athlete Plan',
+    stripePriceEnvKey: 'STRIPE_ATHLETE_PRICE_ID',
+  },
+  coach: {
+    id: 'coach',
+    name: 'Coach Plan',
+    description:
+      'Everything in Athlete plus team management, player roster stats, and team leaderboards.',
+    price: 19.99,
+    billing: 'monthly',
+    cta: 'Get Coach Plan',
+    stripePriceEnvKey: 'STRIPE_COACH_PRICE_ID',
+  },
 };
 
-export const formatPrice = (price: number, billing: Product['billing']) => {
+// Keep legacy key working for existing checkout references
+export const appMembership = products.athlete;
+
+export const formatPrice = (price: number, billing: BillingCycle) => {
   const formatted = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'USD'
+    currency: 'USD',
   }).format(price);
-
   return billing === 'monthly' ? `${formatted}/mo` : formatted;
 };

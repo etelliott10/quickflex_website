@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { AddToCartButton } from '@/components/AddToCartButton';
 import { formatPrice, products } from '@/lib/products';
 
 const workouts = [
@@ -23,7 +22,8 @@ const workouts = [
 ];
 
 export default function AppMembershipPage() {
-  const membership = products.appMembership;
+  const athlete = products.athlete;
+  const coach = products.coach;
 
   return (
     <>
@@ -33,14 +33,14 @@ export default function AppMembershipPage() {
           <h1>Records, Graphs, Workouts, and Drill Tracking</h1>
           <p className="lede">
             The app logs session data automatically and turns reps into graphs you can actually coach from.
-            This is the subscription layer that keeps players engaged long term.
+            Choose the plan that fits your role.
           </p>
-          <div className="price-chip">{formatPrice(membership.price, membership.billing)}</div>
           <div className="cta-row">
-            <AddToCartButton product={membership} className="btn btn-primary" />
-            <Link href="/checkout" className="btn btn-secondary">
-              Add At Checkout
-            </Link>
+            <span className="price-chip">{formatPrice(athlete.price, athlete.billing)} Athlete</span>
+            <span className="price-chip">{formatPrice(coach.price, coach.billing)} Coach</span>
+          </div>
+          <div className="cta-row" style={{ marginTop: 16 }}>
+            <Link href="/checkout" className="btn btn-primary">Get Started</Link>
           </div>
         </div>
 
@@ -156,14 +156,15 @@ export default function AppMembershipPage() {
 
       <section className="checkout-banner">
         <div>
-          <p className="eyebrow">Subscription purchase option</p>
-          <h2>Add membership now or toggle it on during checkout.</h2>
+          <p className="eyebrow">App subscription</p>
+          <h2>Athlete $6.99/mo · Coach $19.99/mo · Free to start</h2>
+          <p style={{ marginTop: 8, opacity: 0.85 }}>
+            Subscriptions are managed inside the FOGOQuickFlex app after download.
+          </p>
         </div>
         <div className="cta-row compact">
-          <AddToCartButton product={membership} className="btn btn-primary" />
-          <Link href="/checkout" className="btn btn-secondary">
-            Continue To Checkout
-          </Link>
+          <Link href="/checkout" className="btn btn-primary">Get the Cube</Link>
+          <Link href="/" className="btn btn-secondary">View All Plans</Link>
         </div>
       </section>
     </>

@@ -149,6 +149,61 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Pricing */}
+      <section>
+        <p className="eyebrow">App Subscription</p>
+        <h2>Pick the plan that fits your training</h2>
+        <p className="lede" style={{ maxWidth: 540, margin: '0 auto 40px' }}>
+          The cube is a one-time purchase. The app subscription unlocks advanced tracking,
+          all ball colors, and coach tools — managed directly in the FOGOQuickFlex app.
+        </p>
+        <div className="card-grid" style={{ alignItems: 'stretch' }}>
+          {/* Free */}
+          <article className="panel" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <p className="eyebrow">Free</p>
+            <p style={{ fontSize: 32, fontWeight: 700 }}>$0</p>
+            <ul style={{ paddingLeft: 18, flex: 1, lineHeight: 1.9 }}>
+              <li>White ball detection</li>
+              <li>Last 10 sessions</li>
+              <li>Reaction timer</li>
+            </ul>
+            <Link href="/app" className="btn btn-secondary" style={{ textAlign: 'center' }}>
+              Download Free
+            </Link>
+          </article>
+
+          {/* Athlete */}
+          <article className="panel" style={{ display: 'flex', flexDirection: 'column', gap: 12, border: '2px solid #EE5C29' }}>
+            <p className="eyebrow" style={{ color: '#EE5C29' }}>Athlete</p>
+            <p style={{ fontSize: 32, fontWeight: 700 }}>$6.99<span style={{ fontSize: 16, fontWeight: 400 }}>/mo</span></p>
+            <ul style={{ paddingLeft: 18, flex: 1, lineHeight: 1.9 }}>
+              <li>All ball colors</li>
+              <li>Unlimited session history</li>
+              <li>CSV export</li>
+              <li>Global leaderboard</li>
+            </ul>
+            <Link href="/app" className="btn btn-primary" style={{ textAlign: 'center' }}>
+              Get Athlete Plan
+            </Link>
+          </article>
+
+          {/* Coach */}
+          <article className="panel" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <p className="eyebrow" style={{ color: '#7C3AED' }}>Coach</p>
+            <p style={{ fontSize: 32, fontWeight: 700 }}>$19.99<span style={{ fontSize: 16, fontWeight: 400 }}>/mo</span></p>
+            <ul style={{ paddingLeft: 18, flex: 1, lineHeight: 1.9 }}>
+              <li>Everything in Athlete</li>
+              <li>Team management</li>
+              <li>Team leaderboard</li>
+              <li>Full roster stats</li>
+            </ul>
+            <Link href="/app" className="btn btn-secondary" style={{ textAlign: 'center' }}>
+              Get Coach Plan
+            </Link>
+          </article>
+        </div>
+      </section>
+
       <section className="checkout-banner">
         <div>
           <p className="eyebrow">Purchase options</p>

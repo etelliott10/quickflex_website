@@ -18,23 +18,25 @@ export function SiteHeader() {
 
   return (
     <header className="topbar">
-      <Link href="/" className="brand" aria-label="Quick Flex home">
-        <span>Quick Flex</span>
-      </Link>
-      <nav>
-        {links.map((link) => {
-          const active = pathname === link.href;
-          return (
-            <Link key={link.href} href={link.href} className={active ? 'active' : undefined}>
-              {link.label}
-            </Link>
-          );
-        })}
-      </nav>
-      <button type="button" className="cart-button" onClick={() => setIsOpen(true)}>
-        Cart
-        {itemCount > 0 ? <span className="cart-badge">{itemCount}</span> : null}
-      </button>
+      <div className="topbar-inner">
+        <Link href="/" className="brand" aria-label="Quick Flex home">
+          <span>Quick Flex</span>
+        </Link>
+        <nav>
+          {links.map((link) => {
+            const active = pathname === link.href;
+            return (
+              <Link key={link.href} href={link.href} className={active ? 'active' : undefined}>
+                {link.label}
+              </Link>
+            );
+          })}
+        </nav>
+        <button type="button" className="cart-button" onClick={() => setIsOpen(true)}>
+          Cart
+          {itemCount > 0 ? <span className="cart-badge">{itemCount}</span> : null}
+        </button>
+      </div>
     </header>
   );
 }
