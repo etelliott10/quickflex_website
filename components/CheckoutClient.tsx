@@ -48,8 +48,8 @@ export function CheckoutClient() {
       const { url, error: apiError } = await res.json();
       if (apiError) throw new Error(apiError);
       window.location.href = url;
-    } catch (e: any) {
-      setError(e.message ?? 'Checkout failed. Please try again.');
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Checkout failed. Please try again.');
       setLoading(false);
     }
   }

@@ -2,11 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   apiVersion: '2026-04-22.dahlia' as any,
 });
 
 export async function POST(req: NextRequest) {
-  const { priceId, mode } = await req.json() as {
+  const { priceId, mode } = (await req.json()) as {
     priceId: string;
     mode: 'payment' | 'subscription';
   };

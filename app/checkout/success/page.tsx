@@ -4,7 +4,7 @@ export default function SuccessPage() {
   return (
     <section style={{ textAlign: 'center', padding: '80px 24px' }}>
       <p className="eyebrow">Order confirmed</p>
-      <h1>You're all set!</h1>
+      <h1>You&apos;re all set!</h1>
       <p className="lede" style={{ maxWidth: 480, margin: '16px auto 32px' }}>
         Check your email for your receipt. Download the FOGOQuickFlex app to start training and
         manage your subscription.

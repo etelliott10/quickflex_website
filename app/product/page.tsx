@@ -27,7 +27,7 @@ const reviews = [
 
 export default function ProductPage() {
   const cube = products.cube;
-  const membership = products.appMembership;
+  const membership = products.athlete;
 
   return (
     <>
